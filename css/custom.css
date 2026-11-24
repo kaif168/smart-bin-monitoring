@@ -1,0 +1,140 @@
+/* Custom styling for Smart Waste Bin Monitoring System */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Bin fill level animations */
+.bin-liquid {
+  transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease;
+}
+
+.bin-container {
+  position: relative;
+  border-radius: 12px 12px 16px 16px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(241, 245, 249, 0.8) 0%, rgba(226, 232, 240, 0.9) 100%);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06), 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.dark .bin-container {
+  background: linear-gradient(180deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Status specific gradient fills */
+.fill-empty {
+  background: linear-gradient(180deg, #94a3b8 0%, #64748b 100%);
+}
+.fill-low {
+  background: linear-gradient(180deg, #4ade80 0%, #16a34a 100%);
+}
+.fill-medium {
+  background: linear-gradient(180deg, #facc15 0%, #ca8a04 100%);
+}
+.fill-high {
+  background: linear-gradient(180deg, #fb923c 0%, #ea580c 100%);
+}
+.fill-critical {
+  background: linear-gradient(180deg, #f87171 0%, #dc2626 100%);
+}
+.fill-overflowing {
+  background: linear-gradient(180deg, #c084fc 0%, #7e22ce 100%);
+  animation: overflowPulse 1.5s infinite alternate ease-in-out;
+}
+
+@keyframes overflowPulse {
+  0% {
+    box-shadow: 0 0 8px rgba(220, 38, 38, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.9);
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+/* Custom Leaflet Map styling */
+.leaflet-popup-content-wrapper {
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15) !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  width: 260px !important;
+}
+
+.leaflet-container {
+  font-family: 'Inter', sans-serif !important;
+  z-index: 10 !important;
+}
+
+/* Custom Map Marker Pins */
+.custom-pin {
+  width: 32px;
+  height: 32px;
+  border-radius: 50% 50% 50% 0;
+  position: absolute;
+  transform: rotate(-45deg);
+  left: 50%;
+  top: 50%;
+  margin: -16px 0 0 -16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  border: 2px solid #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.custom-pin span {
+  transform: rotate(45deg);
+  font-weight: 700;
+  font-size: 11px;
+  color: white;
+}
+
+.custom-pin:hover {
+  transform: rotate(-45deg) scale(1.15);
+}
+
+/* Print CSS Styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-report, #printable-report * {
+    visibility: visible;
+  }
+  #printable-report {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white;
+    color: black;
+    padding: 20px;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
